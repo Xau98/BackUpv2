@@ -88,7 +88,7 @@ public class ServiceAutoBackup extends Service {
         return myAsyncTaskCode.getStatus() == AsyncTask.Status.RUNNING;
     }
 
-    public boolean isAsyncTaskDownloadRunning() {
+    public boolean isAsyncTaskDownloadRunning(AsyncTaskDownload a) {
         if (mAsyncTaskDownload == null)
             return false;
         return mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING;
@@ -143,7 +143,7 @@ public class ServiceAutoBackup extends Service {
         mListSelected = listAllFile;
         mTotalSize = handleFile.totalCapacity(listAllFile);
         String nameFolderBackup = null;
-        Handler handler= new Handler() {
+        Handler handler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 switch (msg.what) {
@@ -259,9 +259,43 @@ public class ServiceAutoBackup extends Service {
         }
     }
 
-    public void onDownload() {
+    public void onDownload(ArrayList<FileItem> listAllFile, ProgressBar progressBar, TextView status) {
         senNotification();
+        mListSelected = listAllFile;
+        for (int i = 0; i < listAllFile.size(); i++ ) {
+            if (mAsyncTaskDownload == null) {
+                mAsyncTaskDownload = new AsyncTaskDownload(getBaseContext(), listAllFile.get(i), progressBar, status);
+                mAsyncTaskDownload.execute();
+            }
+            Log.d("Tiennvh", "onDownload: "+(mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING) );
+            if (mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING) {
 
+            } else {
+
+                mListSelected.get(i).setType(1);
+                if (mCallbackService != null)
+                    mCallbackService.callbackFinish(mListSelected);
+
+            }
+/*
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }*/
+        }
+        mRunnable = new Runnable() {
+            @Override
+            public void run() {
+              if(mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING){
+                  mHandler.postDelayed(this, 300);
+              }else {
+
+              }
+            }
+        };
+
+        mHandler.postDelayed(mRunnable, 100);
     }
 
     callbackService mCallbackService;

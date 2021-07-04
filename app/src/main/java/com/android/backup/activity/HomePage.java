@@ -15,10 +15,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -109,9 +111,11 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View view) {
                 LayoutInflater inflater = getLayoutInflater();
                 String title = "";
-                if (mAutoBackup.isChecked())
+
+                if (mAutoBackup.isChecked()) {
+                    showDiaglog();
                     title = "Hãy xác nhận bạn muốn bắt đầu quá trình sao lưu dữ liệu tự động";
-                else
+                }else
                     title = "Hãy xác nhận bạn tắt quá trình sao lưu dữ liệu tự động";
                 showDialog(HomePage.this, inflater, title, mAutoBackup.isChecked());
             }
@@ -260,30 +264,6 @@ public class HomePage extends AppCompatActivity {
         });
         alert.show();
     }
-/*
-    @Override
-    public void onConfirm(int type) {
-        Log.d("Tiennvh", mAutoBackup.isChecked()+"onConfirm: "+type);
-        SharedPreferences.Editor editor = mSharedPref.edit();
-        editor.putBoolean("modeautobackup",mAutoBackup.isChecked());
-        editor.commit();
-        Intent intent = new Intent(this, ServiceAutoBackup.class);
-        if(mAutoBackup.isChecked()) {
-            startService(intent);
-            IntentFilter intentFilter = new IntentFilter();
-            intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-            intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
-            intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
-            ConditionAutoBackup myReceiver = new ConditionAutoBackup();
-            registerReceiver(myReceiver,intentFilter);
-
-        }else {
-            stopService(intent);
-        }
-
-
-    }*/
-
 
     private void createChannelNotification() {
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Channel service ", NotificationManager.IMPORTANCE_LOW);
@@ -291,6 +271,50 @@ public class HomePage extends AppCompatActivity {
         manager.createNotificationChannel(channel);
     }
 
+    public void showDiaglog(){
+        LayoutInflater inflater = getLayoutInflater();
+        View alertLayout = inflater.inflate(R.layout.dialog_confirm_code_email, null);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setView(alertLayout);
+        alert.setCancelable(false);
+        EditText editText = alertLayout.findViewById(R.id.editext_code);
+        editText.setTransformationMethod(new PasswordTransformationMethod());
+        editText.setHint("Nhập password");
+        TextView title = alertLayout.findViewById(R.id.title_dialog);
+        title.setText("Vui lòng nhập mật khẩu");
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        alert.setPositiveButton("Xác Nhận", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences sharedPref =  getSharedPreferences(MainActivity.SHAREPREFENCE, MODE_PRIVATE);
+                String mID_account = sharedPref.getString("id", null);
+                String mToken = sharedPref.getString("token", null);
+                String password = editText.getText().toString();
+                if (password.equals("") || mID_account.isEmpty()) {
+                    alert.create().dismiss();
+                    Toast.makeText(getBaseContext(), " Nhập thiếu thông tin ", Toast.LENGTH_SHORT);
+                } else {
+
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("_id", mID_account);
+                        jsonObject.put("token", mToken);
+                        jsonObject.put("password", password);
+                        String path = "verifypassword";
+                        RequestToServer.post(path, jsonObject, mCallback);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        alert.show();
+    }
 //    @Override
 //    protected void onDestroy() {
 //        super.onDestroy();

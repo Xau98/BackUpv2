@@ -120,7 +120,8 @@ public class MainActivity extends Activity {
                             } else {
                                 if (mProgressBar != null)
                                     mProgressBar.setVisibility(View.GONE);
-                                Toast.makeText(getApplicationContext(), "Đăng nhập thất bại ", LENGTH_SHORT).show();
+                                String resultWrong = Jobject0.get("result").toString();
+                                Toast.makeText(getApplicationContext(), "Đăng nhập thất bại.  "+resultWrong, LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             if (mProgressBar != null)
@@ -225,5 +226,6 @@ public class MainActivity extends Activity {
             Toast.makeText(getBaseContext(), "Not Connect Internet", LENGTH_SHORT).show();
         }
     }
+
 
 }

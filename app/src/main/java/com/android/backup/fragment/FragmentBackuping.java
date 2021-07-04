@@ -129,10 +129,11 @@ public class FragmentBackuping extends Fragment {
                 }
             }
             AsyncTaskDownload asyncTaskDownload;
-            for (int i = 0; i < mListFileChecked.size(); i++) {
+            mServiceAutoBackup.onDownload(mListFileChecked, mProgressBar, mStatusLoad);
+           /* for (int i = 0; i < mListFileChecked.size(); i++) {
                 asyncTaskDownload = new AsyncTaskDownload(getContext(), mListFileChecked.get(i), mProgressBar, mStatusLoad);
                 asyncTaskDownload.execute();
-            }
+            }*/
         }
     }
 

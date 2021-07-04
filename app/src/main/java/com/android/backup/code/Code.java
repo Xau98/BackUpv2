@@ -100,7 +100,7 @@ public class Code {
                 throw new Exception();
             }
             if(pass== null){
-                Log.d("Tiennvh", "decrypt: loi key null!! ");
+                Log.d("Tiennvh", "decrypt: loi key null!! "+pass);
                 throw new Exception();
             }
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
@@ -122,7 +122,7 @@ public class Code {
                 readLength += b;
                 int percent = (int) Math.round(lengthPerPercent * readLength);
                 progressBar.setProgress(percent);
-                //statusload.setText("Khôi phục " + percent + "%");
+                statusload.setText("Khôi phục " + percent + "%");
             }
             fileOutputStream.flush();
             fileOutputStream.close();
