@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Đăng ký "
+    android:textStyle="bold"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:textSize="30dp"
+    />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập Họ và Tên :"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nguyễn Văn A"
+        android:id="@+id/register_name"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập email:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="android@gmail.com"
+        android:id="@+id/register_email"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập Username:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="30dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_username"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập mật khẩu"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:password="true"
+        android:id="@+id/register_password"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="0dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhập lại mật khẩu :"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:password="true"
+        android:id="@+id/register_prepassword"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="0dp"
+        />
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="REGISTER ACCOUNT"
+         android:textColor="@color/black"
+         android:textSize="20sp"
+         android:layout_marginTop="30dp"
+         android:id="@+id/bt_confirm_regidter"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BackUp</string>
+    <string name="facebook_app_id">2215711075135681</string>
+    <string name="fb_login_protocol_scheme">fb2215711075135681</string>
+</resources>

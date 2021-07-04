@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-cofig cleartextTrafficPermitted="true"></base-cofig>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">45.76.144.34</domain>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/avatar"
+        android:src="@mipmap/avatar"
+        />
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin tài khoản"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Account"
+            android:layout_marginTop="15dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:layout_marginTop="5dp"
+            android:textSize="18sp"
+            android:id="@+id/id_account"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Account"
+            android:layout_marginTop="15dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiennvh"
+            android:layout_marginTop="5dp"
+            android:textSize="18sp"
+            android:id="@+id/name_account"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:layout_marginTop="15dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tiennvh98@gmail.com"
+            android:layout_marginTop="5dp"
+            android:id="@+id/email_account"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày tạo:"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24/05/1998"
+            android:layout_marginTop="5dp"
+            android:id="@+id/date_create_account"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/reset_password"
+    android:text="Đổi mật khẩu"
+    android:textSize="22sp"
+    android:layout_marginTop="10dp"
+    android:textColor="@color/black"
+    />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout_account"
+        android:text="Đăng Xuất"
+        android:textSize="22sp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        />
+</LinearLayout>

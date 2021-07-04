@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_restore">
+    <CheckBox
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+
+        android:id="@+id/checkbox_restore"
+        />
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bản sao lưu today"
+            android:id="@+id/name_restore"
+            android:textSize="20sp"
+            android:paddingStart="15dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_restore"
+            android:text="hôm nay "
+            android:textSize="16sp"
+            android:paddingStart="15dp"
+            />
+    </LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:id="@+id/bt_delete_restore"
+        android:background="#fff"
+        android:src="@drawable/ic_delete_black_24dp"
+        />
+</LinearLayout>

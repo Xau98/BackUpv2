@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text=" Backup server "
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#262222"
+        android:textSize="30sp" />
+    <View
+        android:layout_width="match_parent"
+        android:background="#b2b2b2"
+        android:layout_height="1dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/account_backup"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/icon_peron"
+            android:padding="10dp"
+            android:src="@drawable/ic_bkav_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/text_account_save"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:textColor="#262222"
+            android:text="Tài khoản sao lưu "
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintStart_toEndOf="@+id/icon_peron"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/email_account"
+            android:textSize="16sp"
+            android:text="tien240598@gmail.com"
+            app:layout_constraintStart_toEndOf="@+id/icon_peron"
+            app:layout_constraintTop_toBottomOf="@+id/text_account_save"
+            android:singleLine="true"
+            android:layout_marginStart="10dp"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="#b2b2b2"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_height="1dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/ic_chedule"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_schedule_24"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ic_chedule"
+            >
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/text_auto_save"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Sao lưu tự động"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_auto_backup"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:theme="@style/SCBSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.529"
+                app:layout_constraintStart_toEndOf="@+id/text_auto_save"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:id="@+id/guide_auto"
+                android:text="Tự động sao lưu hàng ngày khi thiết bị được cắm sạc, ở chế độ màn hình khoá và có kết nối Wifi"
+                android:textSize="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_auto_save" />
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/bt_backup_now"
+                android:text="Sao lưu ngay"
+                app:layout_constraintTop_toBottomOf="@+id/guide_auto"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                />
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:id="@+id/textview_backuplast"
+                android:text="Lần cuối - 11:11  Hôm nay "
+                app:layout_constraintTop_toBottomOf="@+id/bt_backup_now"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_view_list_24"
+            />
+
+        <Button
+            android:id="@+id/list_backup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:text="Danh sách bản sao lưu"
+            android:textSize="22sp" />
+    </LinearLayout>
+</LinearLayout>

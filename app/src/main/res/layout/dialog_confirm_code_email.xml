@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/title_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="Vui lòng nhập mã xác thực "
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+    <EditText
+        android:id="@+id/editext_code"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:hint="Nhập mã code email "
+
+        />
+
+</LinearLayout>
