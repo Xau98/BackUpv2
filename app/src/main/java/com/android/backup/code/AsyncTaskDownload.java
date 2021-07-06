@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import javax.crypto.NoSuchPaddingException;
 
@@ -73,9 +74,11 @@ public class AsyncTaskDownload extends AsyncTask<Void, String, String> {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (response.isSuccessful()) {
+                    Log.d("Tiennvh", "onResponse:1 ");
                     FileOutputStream fos = new FileOutputStream(handleFile.PATH_ROOT + "/CompressionFile/" + mFileItem.getName() + ".txt");
                     fos.write(response.body().bytes());
                     fos.close();
+                    Log.d("Tiennvh", "onResponse:2 ");
                     new AsyncTaskdecrypt().execute();
                 } else {
                     mProgressBar.setProgress(0);
@@ -112,7 +115,9 @@ public class AsyncTaskDownload extends AsyncTask<Void, String, String> {
         @Override
         protected String doInBackground(Void... voids) {
             try {
+
                 String namFile = mFileItem.getName();
+                Log.d("Tiennvh", "doInBackground: "+ namFile);
                 Code.decrypt(mContext, handleFile.PATH_ROOT + "/CompressionFile/" + namFile + ".txt", handleFile.PATH_ROOT + "/CompressionFile/" + namFile + ".zip", mProgressBar, mStatusLoad);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -135,5 +140,6 @@ public class AsyncTaskDownload extends AsyncTask<Void, String, String> {
             final File folder = new File(handleFile.PATH_ROOT + "/CompressionFile");
             handleFile.listFilesForFolder(folder, mContext);
         }
+
     }
 }

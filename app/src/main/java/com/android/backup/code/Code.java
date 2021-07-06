@@ -122,6 +122,7 @@ public class Code {
                 readLength += b;
                 int percent = (int) Math.round(lengthPerPercent * readLength);
                 progressBar.setProgress(percent);
+                Log.d("Tiennvh", "decrypt: "+percent);
                 statusload.setText("Khôi phục " + percent + "%");
             }
             fileOutputStream.flush();

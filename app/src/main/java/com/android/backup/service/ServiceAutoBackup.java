@@ -262,13 +262,15 @@ public class ServiceAutoBackup extends Service {
     public void onDownload(ArrayList<FileItem> listAllFile, ProgressBar progressBar, TextView status) {
         senNotification();
         mListSelected = listAllFile;
-        for (int i = 0; i < listAllFile.size(); i++ ) {
+        for (int i = 0; i < listAllFile.size();i++ ) {
             if (mAsyncTaskDownload == null) {
                 mAsyncTaskDownload = new AsyncTaskDownload(getBaseContext(), listAllFile.get(i), progressBar, status);
+
                 mAsyncTaskDownload.execute();
+
             }
             Log.d("Tiennvh", "onDownload: "+(mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING) );
-            if (mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING) {
+            /*if (mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING) {
 
             } else {
 
@@ -276,17 +278,12 @@ public class ServiceAutoBackup extends Service {
                 if (mCallbackService != null)
                     mCallbackService.callbackFinish(mListSelected);
 
-            }
-/*
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }*/
         }
         mRunnable = new Runnable() {
             @Override
             public void run() {
+                Log.d("Tiennvh", "run: "+(mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING));
               if(mAsyncTaskDownload.getStatus() == AsyncTask.Status.RUNNING){
                   mHandler.postDelayed(this, 300);
               }else {
@@ -294,7 +291,6 @@ public class ServiceAutoBackup extends Service {
               }
             }
         };
-
         mHandler.postDelayed(mRunnable, 100);
     }
 

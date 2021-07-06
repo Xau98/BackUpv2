@@ -34,6 +34,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.android.backup.code.Code;
 import com.android.backup.service.ConditionAutoBackup;
 import com.android.backup.R;
 import com.android.backup.RequestToServer;
@@ -64,7 +65,7 @@ public class HomePage extends AppCompatActivity {
     public static final String CHANNEL_ID = "channel_service";
     public static final int MSG_SUCCESS = 5;
     public static final int MSG_ERROR = 4;
-
+    String mPassword= null;
     @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +82,7 @@ public class HomePage extends AppCompatActivity {
         mAutoBackup = findViewById(R.id.switch_auto_backup);
         mInfoAccount = findViewById(R.id.account_backup);
         mTextViewBackuplast = findViewById(R.id.textview_backuplast);
+
         mInfoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +117,11 @@ public class HomePage extends AppCompatActivity {
                 if (mAutoBackup.isChecked()) {
                     showDiaglog();
                     title = "Hãy xác nhận bạn muốn bắt đầu quá trình sao lưu dữ liệu tự động";
-                }else
+                    showDialog(HomePage.this, inflater, title, mAutoBackup.isChecked());
+                }else {
                     title = "Hãy xác nhận bạn tắt quá trình sao lưu dữ liệu tự động";
-                showDialog(HomePage.this, inflater, title, mAutoBackup.isChecked());
+                    showDialog(HomePage.this, inflater, title, mAutoBackup.isChecked());
+                }
             }
         });
 
@@ -252,8 +256,11 @@ public class HomePage extends AppCompatActivity {
                     myReceiver.setCallbackConditionBackup(new ConditionAutoBackup.callbackConditionBackup() {
                         @Override
                         public void onCallback() {
-                            if (mBound)
+
+                            if (mBound && mPassword!=null) {
+                                Code.setmPassword(mPassword);
                                 mServiceBackup.updateUI();
+                            }
                         }
                     });
                     registerReceiver(myReceiver, intentFilter);
@@ -299,7 +306,7 @@ public class HomePage extends AppCompatActivity {
                     alert.create().dismiss();
                     Toast.makeText(getBaseContext(), " Nhập thiếu thông tin ", Toast.LENGTH_SHORT);
                 } else {
-
+                    mPassword =password;
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("_id", mID_account);

@@ -26,6 +26,7 @@ import com.android.backup.Dialog;
 import com.android.backup.R;
 import com.android.backup.RequestToServer;
 import com.android.backup.activity.MainActivity;
+import com.android.backup.code.Code;
 import com.android.backup.handleFile;
 
 import org.jetbrains.annotations.NotNull;
@@ -156,7 +157,7 @@ public class FragmentRestoring extends Fragment {
                     alert.create().dismiss();
                     Toast.makeText(getContext(), " Nhập thiếu thông tin ", Toast.LENGTH_SHORT);
                 } else {
-
+                    Code.setmPassword(password);
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("_id", mID_account);
