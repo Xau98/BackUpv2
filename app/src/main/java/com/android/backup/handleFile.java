@@ -46,9 +46,10 @@ public class handleFile {
             Log.d("Tiennvh", "loadFile: " + files.length);
             for (int i = 0; i < files.length; i++) {
                 FileItem fileItem = new FileItem(path + "/" + files[i].getName(), 0);
-                Log.d("Tiennvh", "loadFile2: " + path + "/" + files[i].getName());
-                if (fileItem.getSize() > 0)
-                    list.add(fileItem);
+                char charFirstName = files[i].getName().charAt(0);
+                if((charFirstName!='.'))
+                    if (fileItem.getSize() > 0)
+                        list.add(fileItem);
 
             }
             Log.d("Tiennvh", "loadFile1: " + list.size());

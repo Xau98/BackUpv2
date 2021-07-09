@@ -71,6 +71,8 @@ public class MainActivity extends Activity {
                 && permission.isReadSMSPermissionGranted() && permission.isReadCallLogPermissionGranted()
         ) {
         }
+        //encrypt: kn/wfUfSz+Xww5Luc9E/MenmERpJ+FWwurgY7VXz7XBKhbOfQlS5glVeZoOKfFxk//Tiennvh123@
+        Log.d("Tiennvh", "onCreate: "+Code.decryptString("kn/wfUfSz+Xww5Luc9E/MenmERpJ+FWwurgY7VXz7XBKhbOfQlS5glVeZoOKfFxk","Tiennvh123@"));
         String id_account = mPreferences.getString("id", null);
         String token = mPreferences.getString("token", null);
         String idDevices = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -111,6 +113,7 @@ public class MainActivity extends Activity {
                                 editor.putString("date_create", Jobject.getString("date_create"));
                                 editor.putString("key_secret", Jobject.getString("keysecret"));
                                 editor.putString("id_devices", idDevices);
+                                Log.d("Tiennvh", "handleMessage: "+ Jobject.getString("keysecret"));
                                 editor.commit();
                                 Intent intent = new Intent(getBaseContext(), HomePage.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

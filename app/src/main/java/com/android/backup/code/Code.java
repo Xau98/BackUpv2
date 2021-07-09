@@ -47,6 +47,7 @@ public class Code {
             FileOutputStream fileOutputStream = new FileOutputStream(pathOutput);
             SharedPreferences sharedPreferences = context.getSharedPreferences(MainActivity.SHAREPREFENCE, Context.MODE_PRIVATE);
             String key_screct = sharedPreferences.getString("key_secret", null);
+            Log.d("Tiennvh", "encrypt: "+key_screct+"//"+mPassword);
             if(mPassword!=null||key_screct!=null){
                 pass = decryptString(key_screct,mPassword);
             }else {
@@ -93,6 +94,7 @@ public class Code {
             FileOutputStream fileOutputStream = new FileOutputStream(pathOutput);
             SharedPreferences sharedPreferences = context.getSharedPreferences(MainActivity.SHAREPREFENCE, Context.MODE_PRIVATE);
             String key_screct = sharedPreferences.getString("key_secret", null);
+            Log.d("Tiennvh", "encrypt: "+key_screct+"//"+mPassword);
             if(mPassword!=null||key_screct!=null){
                 pass = decryptString(key_screct,mPassword);
             }else {
@@ -124,6 +126,8 @@ public class Code {
                 progressBar.setProgress(percent);
                 Log.d("Tiennvh", "decrypt: "+percent);
                 statusload.setText("Khôi phục " + percent + "%");
+                if(percent>=100)
+                    statusload.setText("Khôi phục xong !");
             }
             fileOutputStream.flush();
             fileOutputStream.close();

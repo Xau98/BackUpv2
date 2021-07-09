@@ -76,7 +76,7 @@ public class RegisterAcivity extends Activity {
                             JSONObject Jobject = new JSONObject(mJsonData);
                             String success = Jobject.get("success").toString();
                             Log.d("Tiennvh", "handleMessage: "+success);
-                            if (success.equals(true)) {
+                            if (success.equals("true")) {
                                 onBackPressed();
                                 break;
                             } else {

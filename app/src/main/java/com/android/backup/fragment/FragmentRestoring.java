@@ -51,8 +51,6 @@ public class FragmentRestoring extends Fragment {
     public static final int MSG_ERRO = 14;
     public static final int MSG_SUCCES = 15;
     public static final int MSG_PASSWORNG = 16;
-    CallBackConfirmRestore mCallBackConfirmRestore;
-
     public FragmentRestoring(Dialog dialog, long mCapacity) {
         this.dialog = dialog;
         this.mCapacity = mCapacity;
@@ -71,7 +69,6 @@ public class FragmentRestoring extends Fragment {
                 LayoutInflater inflater = getLayoutInflater();
                 if (mCapacity != 0) {
                     showDiaglog();
-
                 } else {
                     String title = "Bạn chưa chọn data dữ liệu để đồng bộ!";
                     dialog.showDialog(getContext(), inflater, title, false, 0);
@@ -172,9 +169,5 @@ public class FragmentRestoring extends Fragment {
             }
         });
         alert.show();
-    }
-
-    interface CallBackConfirmRestore {
-        void onCallBackConfirmRestore();
     }
 }

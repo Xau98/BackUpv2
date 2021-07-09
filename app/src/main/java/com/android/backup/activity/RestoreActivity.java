@@ -13,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,6 +70,7 @@ public class RestoreActivity extends AppCompatActivity implements AdapterListFil
         adapterItemFile = new AdapterListFileRestore(this, mListRestore);
         adapterItemFile.setOnCallBackRestore(this);
         mLinearLayout = findViewById(R.id.linear_title);
+        getSupportActionBar().setTitle("Danh sách các bản sao lưu");
         mLinearLayout.setOnTouchListener(new OnSwipeTouchListener(RestoreActivity.this) {
             public void onSwipeTop() {
                 Log.d("Tiennvh", "onSwipeTop: ");

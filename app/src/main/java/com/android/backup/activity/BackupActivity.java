@@ -282,6 +282,7 @@ public class BackupActivity extends AppCompatActivity implements Dialog.onConfir
                 AdapterItemFile adapterListFile = new AdapterItemFile(this, mListFileChecked, false, false);
                 mRecyclerView.setAdapter(adapterListFile);
             }
+            mBTUpdateName.setVisibility(View.GONE);
             mNameBackup.setEnabled(false);
         } else {
             Log.d("Tiennvh", "onConfirm: " + type);

@@ -100,7 +100,7 @@ public class ResetPassword extends Activity {
                         if (keysecret != null) {
                             String getkeyencode = Code.decryptString(keysecret, passwordold);
                             if (getkeyencode != null) {
-                                keynew = Code.encryptString(getkeyencode, passwordold);
+                                keynew = Code.encryptString(getkeyencode, passwordnew);
                                 JSONObject jsonObject = new JSONObject();
 
                                 try {

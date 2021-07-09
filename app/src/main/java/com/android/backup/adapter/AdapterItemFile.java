@@ -63,7 +63,7 @@ public class AdapterItemFile extends RecyclerView.Adapter<AdapterItemFile.ViewHo
             }
         });
         if (isRestore) {
-            holder.statusBackup.setText("đang khôi phục ...");
+            holder.statusBackup.setText( "");
         } else {
             if (fileItem.getType() == 1) {
                 holder.statusBackup.setText("đã xong");
